@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MutuelleBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Meteo">
+    <Key>
+      <PropertyRef Name="idMesure" />
+    </Key>
+    <Property Name="idMesure" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="station" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tempmin" Type="Double" />
+    <Property Name="tempmax" Type="Double" />
+    <Property Name="ventmax" Type="Double" />
+    <Property Name="precipe" Type="Double" />
+  </EntityType>
+  <EntityType Name="Station2">
+    <Key>
+      <PropertyRef Name="idStation" />
+    </Key>
+    <Property Name="idStation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="departement" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="code" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MeteoWithDep">
+    <Key>
+      <PropertyRef Name="idMesure" />
+      <PropertyRef Name="station" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="idStation" />
+      <PropertyRef Name="departement" />
+      <PropertyRef Name="nom" />
+    </Key>
+    <Property Name="idMesure" Type="Int32" Nullable="false" />
+    <Property Name="station" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tempmin" Type="Double" />
+    <Property Name="tempmax" Type="Double" />
+    <Property Name="ventmax" Type="Double" />
+    <Property Name="precipe" Type="Double" />
+    <Property Name="idStation" Type="Int32" Nullable="false" />
+    <Property Name="departement" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="code" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="MutuelleBDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Meteo" EntityType="Self.Meteo" />
+    <EntitySet Name="Station2" EntityType="Self.Station2" />
+    <EntitySet Name="MeteoWithDep" EntityType="Self.MeteoWithDep" />
+  </EntityContainer>
+</Schema>

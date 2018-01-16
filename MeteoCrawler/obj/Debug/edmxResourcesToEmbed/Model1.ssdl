@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MutuelleBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Meteo">
+    <Key>
+      <PropertyRef Name="idMesure" />
+    </Key>
+    <Property Name="idMesure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="station" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="tempmin" Type="float" />
+    <Property Name="tempmax" Type="float" />
+    <Property Name="ventmax" Type="float" />
+    <Property Name="precipe" Type="float" />
+  </EntityType>
+  <EntityType Name="Station2">
+    <Key>
+      <PropertyRef Name="idStation" />
+    </Key>
+    <Property Name="idStation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="departement" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="code" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'MutuelleBD.dbo.MeteoWithDep' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+  <EntityType Name="MeteoWithDep">
+    <Key>
+      <PropertyRef Name="idMesure" />
+      <PropertyRef Name="station" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="idStation" />
+      <PropertyRef Name="departement" />
+      <PropertyRef Name="nom" />
+    </Key>
+    <Property Name="idMesure" Type="int" Nullable="false" />
+    <Property Name="station" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="tempmin" Type="float" />
+    <Property Name="tempmax" Type="float" />
+    <Property Name="ventmax" Type="float" />
+    <Property Name="precipe" Type="float" />
+    <Property Name="idStation" Type="int" Nullable="false" />
+    <Property Name="departement" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="code" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityContainer Name="MutuelleBDModelStoreContainer">
+    <EntitySet Name="Meteo" EntityType="Self.Meteo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Station2" EntityType="Self.Station2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MeteoWithDep" EntityType="Self.MeteoWithDep" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MeteoWithDep].[idMesure] AS [idMesure], 
+    [MeteoWithDep].[station] AS [station], 
+    [MeteoWithDep].[date] AS [date], 
+    [MeteoWithDep].[tempmin] AS [tempmin], 
+    [MeteoWithDep].[tempmax] AS [tempmax], 
+    [MeteoWithDep].[ventmax] AS [ventmax], 
+    [MeteoWithDep].[precipe] AS [precipe], 
+    [MeteoWithDep].[idStation] AS [idStation], 
+    [MeteoWithDep].[departement] AS [departement], 
+    [MeteoWithDep].[nom] AS [nom], 
+    [MeteoWithDep].[code] AS [code]
+    FROM [dbo].[MeteoWithDep] AS [MeteoWithDep]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

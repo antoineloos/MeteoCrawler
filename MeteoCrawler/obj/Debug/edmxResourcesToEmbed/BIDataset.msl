@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MutuelleBDModelStoreContainer" CdmEntityContainer="MutuelleBDEntities">
+    <EntitySetMapping Name="ReleveMeteo">
+      <EntityTypeMapping TypeName="MutuelleBDModel.ReleveMeteo">
+        <MappingFragment StoreEntitySet="ReleveMeteo">
+          <ScalarProperty Name="idMesure" ColumnName="idMesure" />
+          <ScalarProperty Name="station" ColumnName="station" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="tempmin" ColumnName="tempmin" />
+          <ScalarProperty Name="tempmax" ColumnName="tempmax" />
+          <ScalarProperty Name="ventmax" ColumnName="ventmax" />
+          <ScalarProperty Name="precipe" ColumnName="precipe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

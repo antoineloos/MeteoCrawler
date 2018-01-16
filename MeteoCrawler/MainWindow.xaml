@@ -1,0 +1,28 @@
+﻿<Window x:Class="MeteoCrawler.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:nb ="clr-namespace:CurrencyTextBoxControl;assembly=CurrencyTextBoxControl"
+        
+        Title="MainWindow" Height="100" Width="525">
+    <Grid>
+      
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            
+           
+                <StackPanel Orientation="Horizontal">
+                    <Button Content=" start crawl" Click="Button_Click" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TextBlock x:Name="anneetxt"/>
+                    <TextBlock x:Name="moistxt"/>
+                    <TextBlock x:Name="nbville"/>
+                    <TextBlock Text=" / "/>
+                    <TextBlock x:Name="nbcurrent"/>
+                <TextBlock Text=" : "/>
+                <TextBlock x:Name="deptxt"/>
+            
+            </StackPanel>
+        
+            
+        </StackPanel>
+       
+    </Grid>
+</Window>

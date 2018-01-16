@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MutuelleBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Meteo2">
+    <Key>
+      <PropertyRef Name="idMesure" />
+    </Key>
+    <Property Name="idMesure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="tempmin" Type="float" />
+    <Property Name="tempmax" Type="float" />
+    <Property Name="ventmax" Type="float" />
+    <Property Name="precipe" Type="float" />
+    <Property Name="idStation" Type="int" />
+  </EntityType>
+  <EntityType Name="Station2">
+    <Key>
+      <PropertyRef Name="idStation" />
+    </Key>
+    <Property Name="idStation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="departement" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="code" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'MutuelleBD.dbo.LstDep' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+  <EntityType Name="LstDep">
+    <Key>
+      <PropertyRef Name="departement" />
+    </Key>
+    <Property Name="departement" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Meteo2_Station2">
+    <End Role="Station2" Type="Self.Station2" Multiplicity="0..1" />
+    <End Role="Meteo2" Type="Self.Meteo2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Station2">
+        <PropertyRef Name="idStation" />
+      </Principal>
+      <Dependent Role="Meteo2">
+        <PropertyRef Name="idStation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MutuelleBDModelStoreContainer">
+    <EntitySet Name="Meteo2" EntityType="Self.Meteo2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Station2" EntityType="Self.Station2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LstDep" EntityType="Self.LstDep" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LstDep].[departement] AS [departement]
+    FROM [dbo].[LstDep] AS [LstDep]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Meteo2_Station2" Association="Self.FK_Meteo2_Station2">
+      <End Role="Station2" EntitySet="Station2" />
+      <End Role="Meteo2" EntitySet="Meteo2" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

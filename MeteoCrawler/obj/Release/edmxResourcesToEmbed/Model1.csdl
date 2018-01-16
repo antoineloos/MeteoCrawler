@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MutuelleBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Meteo2">
+    <Key>
+      <PropertyRef Name="idMesure" />
+    </Key>
+    <Property Name="idMesure" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tempmin" Type="Double" />
+    <Property Name="tempmax" Type="Double" />
+    <Property Name="ventmax" Type="Double" />
+    <Property Name="precipe" Type="Double" />
+    <Property Name="idStation" Type="Int32" />
+    <NavigationProperty Name="Station2" Relationship="Self.FK_Meteo2_Station2" FromRole="Meteo2" ToRole="Station2" />
+  </EntityType>
+  <EntityType Name="Station2">
+    <Key>
+      <PropertyRef Name="idStation" />
+    </Key>
+    <Property Name="idStation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="departement" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="code" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Meteo2" Relationship="Self.FK_Meteo2_Station2" FromRole="Station2" ToRole="Meteo2" />
+  </EntityType>
+  <EntityType Name="LstDep">
+    <Key>
+      <PropertyRef Name="departement" />
+    </Key>
+    <Property Name="departement" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Meteo2_Station2">
+    <End Role="Station2" Type="Self.Station2" Multiplicity="0..1" />
+    <End Role="Meteo2" Type="Self.Meteo2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Station2">
+        <PropertyRef Name="idStation" />
+      </Principal>
+      <Dependent Role="Meteo2">
+        <PropertyRef Name="idStation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MutuelleBDEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Meteo2" EntityType="Self.Meteo2" />
+    <EntitySet Name="Station2" EntityType="Self.Station2" />
+    <EntitySet Name="LstDep" EntityType="Self.LstDep" />
+    <AssociationSet Name="FK_Meteo2_Station2" Association="Self.FK_Meteo2_Station2">
+      <End Role="Station2" EntitySet="Station2" />
+      <End Role="Meteo2" EntitySet="Meteo2" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

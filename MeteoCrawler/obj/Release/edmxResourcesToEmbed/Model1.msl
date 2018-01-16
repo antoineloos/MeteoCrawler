@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MutuelleBDModelStoreContainer" CdmEntityContainer="MutuelleBDEntities4">
+    <EntitySetMapping Name="Meteo2">
+      <EntityTypeMapping TypeName="MutuelleBDModel.Meteo2">
+        <MappingFragment StoreEntitySet="Meteo2">
+          <ScalarProperty Name="idMesure" ColumnName="idMesure" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="tempmin" ColumnName="tempmin" />
+          <ScalarProperty Name="tempmax" ColumnName="tempmax" />
+          <ScalarProperty Name="ventmax" ColumnName="ventmax" />
+          <ScalarProperty Name="precipe" ColumnName="precipe" />
+          <ScalarProperty Name="idStation" ColumnName="idStation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Station2">
+      <EntityTypeMapping TypeName="MutuelleBDModel.Station2">
+        <MappingFragment StoreEntitySet="Station2">
+          <ScalarProperty Name="idStation" ColumnName="idStation" />
+          <ScalarProperty Name="departement" ColumnName="departement" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LstDep">
+      <EntityTypeMapping TypeName="MutuelleBDModel.LstDep">
+        <MappingFragment StoreEntitySet="LstDep">
+          <ScalarProperty Name="departement" ColumnName="departement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

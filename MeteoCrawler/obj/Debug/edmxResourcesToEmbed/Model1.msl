@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MutuelleBDModelStoreContainer" CdmEntityContainer="MutuelleBDEntities">
+    <EntitySetMapping Name="Meteo">
+      <EntityTypeMapping TypeName="MutuelleBDModel.Meteo">
+        <MappingFragment StoreEntitySet="Meteo">
+          <ScalarProperty Name="idMesure" ColumnName="idMesure" />
+          <ScalarProperty Name="station" ColumnName="station" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="tempmin" ColumnName="tempmin" />
+          <ScalarProperty Name="tempmax" ColumnName="tempmax" />
+          <ScalarProperty Name="ventmax" ColumnName="ventmax" />
+          <ScalarProperty Name="precipe" ColumnName="precipe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Station2">
+      <EntityTypeMapping TypeName="MutuelleBDModel.Station2">
+        <MappingFragment StoreEntitySet="Station2">
+          <ScalarProperty Name="idStation" ColumnName="idStation" />
+          <ScalarProperty Name="departement" ColumnName="departement" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MeteoWithDep">
+      <EntityTypeMapping TypeName="MutuelleBDModel.MeteoWithDep">
+        <MappingFragment StoreEntitySet="MeteoWithDep">
+          <ScalarProperty Name="idMesure" ColumnName="idMesure" />
+          <ScalarProperty Name="station" ColumnName="station" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="tempmin" ColumnName="tempmin" />
+          <ScalarProperty Name="tempmax" ColumnName="tempmax" />
+          <ScalarProperty Name="ventmax" ColumnName="ventmax" />
+          <ScalarProperty Name="precipe" ColumnName="precipe" />
+          <ScalarProperty Name="idStation" ColumnName="idStation" />
+          <ScalarProperty Name="departement" ColumnName="departement" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
